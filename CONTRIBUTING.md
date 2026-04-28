@@ -141,6 +141,12 @@ Use imperative mood with conventional prefixes:
 5. Open a PR referencing the issue: `Closes #<number>`
 6. Wait for maintainer review. Note that reviewers are automatically assigned based on our [CODEOWNERS](.github/CODEOWNERS) configuration. For more details on our branch protection rules, see [Branch Protection](docs/contributing/branch-protection.md).
 
+## CI/CD Secrets
+
+The following secrets are required for full CI/CD functionality:
+
+- **CODECOV_TOKEN**: Required for uploading test coverage reports to Codecov. Add this secret in your repository settings under Settings > Secrets and variables > Actions. You can obtain a token from [codecov.io](https://codecov.io).
+
 ## Code Standards
 
 ### Rust (contracts)
