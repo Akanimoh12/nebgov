@@ -37,6 +37,7 @@ NebGov is the canonical governance framework for the Stellar ecosystem — a mod
 
 | Package                         | Description                                                      |
 | ------------------------------- | ---------------------------------------------------------------- |
+| `contracts/guardian-council`    | M-of-N emergency guardian for governor pause and cancellation     |
 | `contracts/governor`            | Core governance contract — proposal lifecycle, voting, execution |
 | `contracts/timelock`            | Delayed execution controller ([docs](./docs/timelock.md))        |
 | `contracts/token-votes`         | Voting power with checkpointing and delegation                   |

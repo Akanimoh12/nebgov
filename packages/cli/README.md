@@ -70,6 +70,7 @@ Example `~/.nebgov/config.json`:
 | `NEBGOV_BACKEND_URL` | `backendUrl` | `voting-rewards`. Required by `claims`, optional for `epochs`. |
 | `NEBGOV_KEYPAIR_FILE` | `keypairFile` | Default signer for write commands when `--keypair` is omitted. |
 | `NEBGOV_DEFAULT_ACCOUNT` | `defaultAccount` | Default address for read commands that take an account. |
+| `NEBGOV_GUARDIAN_COUNCIL_ADDRESS` | `guardianCouncilAddress` | `guardian-council` (required). |
 | `NEBGOV_PROPOSAL_BONDS_ADDRESS` | n/a (env only) | `proposal-bonds` |
 | `NEBGOV_CONVICTION_VOTING_ADDRESS` | n/a (env only) | `conviction-voting` |
 | `NEBGOV_OPTIMISTIC_GOVERNOR_ADDRESS` | n/a (env only) | `optimistic-governor` |
@@ -254,3 +255,27 @@ nebgov voting-rewards fund --amount 5000000000 --keypair ~/.nebgov/keys/funder.s
 ```bash
 pnpm --filter @nebgov/cli test
 ```
+
+### guardian-council
+
+Set `NEBGOV_GUARDIAN_COUNCIL_ADDRESS` or `guardianCouncilAddress` in the config
+file. Views require a funded public `defaultAccount` (or `keypairFile`); writes
+use `--keypair` for the transaction signer.
+
+```bash
+nebgov guardian-council propose Pause --keypair member.json
+nebgov guardian-council propose Unpause --keypair member.json
+nebgov guardian-council propose CancelActive --proposal-id 42 --keypair member.json
+nebgov guardian-council propose CancelQueued --proposal-id 42 --keypair member.json
+nebgov guardian-council propose RotateMember --old G... --new G... --keypair member.json
+nebgov guardian-council propose SetThreshold --threshold 2 --keypair member.json
+nebgov guardian-council approve 0 --keypair other-member.json
+nebgov guardian-council revoke 0 --keypair other-member.json
+nebgov guardian-council execute 0 --keypair payer.json
+nebgov guardian-council get 0
+nebgov guardian-council members
+nebgov guardian-council threshold
+```
+
+Proposing includes the proposer's approval. Execution is permissionless once
+the current member threshold is met, within the action's configured lifetime.

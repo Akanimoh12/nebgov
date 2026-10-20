@@ -1,3 +1,4 @@
+import { registerGuardianCouncil } from "./guardianCouncil.js";
 import { Command } from "commander";
 import {
   GovernorClient,
@@ -602,6 +603,8 @@ export function createProgram(): Command {
           printGovernor(entry, cfg, format, global, `NebGov governor #${governorId}`);
         }),
     );
+
+  registerGuardianCouncil(program, context);
 
   program
     .command("proposal-bonds")

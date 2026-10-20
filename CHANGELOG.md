@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Guardian Council SDK client with typed action encoding and CLI commands for proposing, approving, revoking, executing, and inspecting actions (#1395, #1396).
+- Guardian Council contract entry in the README and `GUARDIAN_COUNCIL_ADDRESS` in the root environment template (#1394, #1398).
+
 - Guardian Council: M-of-N multisig emergency guardian council for governance intervention (#1185)
 - Conviction Voting: self-executing voting based on time-weighted conviction scores with pagination support for stake retrieval (#1175, #1174)
 - Optimistic Governance: fast-track proposal execution with challenge window and objection mechanism (#1174)
